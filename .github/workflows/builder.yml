@@ -36,9 +36,9 @@ jobs:
       - name: Use cmake
         run: cmake --version
       - name: build
-        run: mkdir xmrig/build && cd xmrig/build && cmake ..
+        run: mkdir build && cd build && cmake ..
       - name: make
-        run: cd xmrig/build && make -j$(nproc)
+        run: cd build && make -j$(nproc)
       - name: zip
         run: zip -r build-linux.zip build
       - name: 'Upload Artifact Linux'
@@ -72,9 +72,9 @@ jobs:
       - name: get dependencies
         run: echo "todo"
       - name: build
-        run: mkdir xmrig/build && cd xmrig/build && cmake .. -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS=deps/msvc2019/x64
+        run: mkdir build && cd build && cmake .. -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS=deps/msvc2019/x64
       - name: make
-        run: cd xmrig/build && make -j$(nproc)
+        run: cd build && make -j$(nproc)
       - name: zip
         run: zip -r build-linux.zip build
       - name: 'Upload Artifact Windows'
