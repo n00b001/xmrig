@@ -47,6 +47,13 @@ jobs:
           name: build-linux.zip
           path: build-linux.zip
           retention-days: 5
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: CMakeOutput.log
+          path: build/CMakeFiles/CMakeOutput.log
   build-windows:
     runs-on: windows-2019
 
@@ -85,4 +92,10 @@ jobs:
           name: build-windows.zip
           path: build-windows.zip
           retention-days: 5          
-        
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: CMakeOutput.log
+          path: build/CMakeFiles/CMakeOutput.log
