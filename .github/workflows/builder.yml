@@ -83,9 +83,9 @@ jobs:
       - name: build
         run: mkdir build && cd build && cmake .. -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS=deps/msvc2019/x64 -DWITH_HWLOC=OFF
       - name: make
-        run: cd build && make -j$(nproc)
+        run: cd build && cmake --build . --config Release
       - name: zip
-        run: zip -r build-linux.zip build
+        run: zip -r build-windows.zip build
       - name: 'Upload Artifact Windows'
         uses: actions/upload-artifact@v3
         with:
