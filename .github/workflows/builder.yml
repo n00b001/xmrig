@@ -36,7 +36,7 @@ jobs:
       - name: Use cmake
         run: cmake --version
       - name: build
-        run: mkdir build && cd build && cmake ..
+        run: mkdir build && cd build && cmake .. -DWITH_HWLOC=OFF
       - name: make
         run: cd build && make -j$(nproc)
       - name: zip
@@ -53,6 +53,8 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3.5.3
+        with:
+          submodules: 'true'
       - shell: bash
         name: Reduce donation
         env:
@@ -72,7 +74,7 @@ jobs:
       - name: get dependencies
         run: echo "todo"
       - name: build
-        run: mkdir build && cd build && cmake .. -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS=deps/msvc2019/x64
+        run: mkdir build && cd build && cmake .. -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS=deps/msvc2019/x64 -DWITH_HWLOC=OFF
       - name: make
         run: cd build && make -j$(nproc)
       - name: zip
