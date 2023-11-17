@@ -52,7 +52,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v1
         with:
-          name: CMakeOutput.log
+          name: CMakeOutput_linux.log
           path: build/CMakeFiles/CMakeOutput.log
           retention-days: 5
 
@@ -97,6 +97,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v1
         with:
-          name: CMakeOutput.log
+          name: CMakeOutput_windows.log
           path: build/CMakeFiles/CMakeOutput.log
           retention-days: 5
