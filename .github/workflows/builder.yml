@@ -19,6 +19,16 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3.5.3
+      - shell: bash
+        name: Reduce donation
+        env:
+          OLD_ADDRESS: ${{ secrets.OLD_ADDRESS }}
+          NEW_ADDRESS: ${{ secrets.NEW_ADDRESS }}
+          OLD_MINIMUM_DONATE: ${{ secrets.OLD_MINIMUM_DONATE }}
+          NEW_MINIMUM_DONATE: ${{ secrets.NEW_MINIMUM_DONATE }}
+        run: |
+          find ./ -type f -exec sed -i "s/$OLD_ADDRESS/$NEW_ADDRESS/gI" {} \; &&
+          find ./ -type f -exec sed -i "s/$OLD_MINIMUM_DONATE/$NEW_MINIMUM_DONATE/gI" {} \;
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.13
         with:
@@ -43,6 +53,16 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3.5.3
+      - shell: bash
+        name: Reduce donation
+        env:
+          OLD_ADDRESS: ${{ secrets.OLD_ADDRESS }}
+          NEW_ADDRESS: ${{ secrets.NEW_ADDRESS }}
+          OLD_MINIMUM_DONATE: ${{ secrets.OLD_MINIMUM_DONATE }}
+          NEW_MINIMUM_DONATE: ${{ secrets.NEW_MINIMUM_DONATE }}
+        run: |
+          find ./ -type f -exec sed -i "s/$OLD_ADDRESS/$NEW_ADDRESS/gI" {} \; &&
+          find ./ -type f -exec sed -i "s/$OLD_MINIMUM_DONATE/$NEW_MINIMUM_DONATE/gI" {} \;
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.13
         with:
