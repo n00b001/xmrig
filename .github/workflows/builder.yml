@@ -54,6 +54,8 @@ jobs:
         with:
           name: CMakeOutput.log
           path: build/CMakeFiles/CMakeOutput.log
+          retention-days: 5
+
   build-windows:
     runs-on: windows-2019
 
@@ -89,7 +91,7 @@ jobs:
         with:
           name: build-windows.zip
           path: build-windows.zip
-          retention-days: 5          
+          retention-days: 5
 
       - name: Upload build logs
         if: always()
@@ -97,3 +99,4 @@ jobs:
         with:
           name: CMakeOutput.log
           path: build/CMakeFiles/CMakeOutput.log
+          retention-days: 5
