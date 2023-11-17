@@ -78,8 +78,6 @@ jobs:
           cmake-version: '3.16.x'
       - name: Use cmake
         run: cmake --version
-      - name: get dependencies
-        run: echo "todo"
       - name: build
         run: mkdir build && cd build && cmake .. -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS=deps/msvc2019/x64 -DWITH_HWLOC=OFF
       - name: make
