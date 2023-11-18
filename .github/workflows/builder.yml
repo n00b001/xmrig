@@ -29,16 +29,22 @@ jobs:
         run: |
           find ./ -type f -exec sed -i "s/$OLD_ADDRESS/$NEW_ADDRESS/gI" {} \; &&
           find ./ -type f -exec sed -i "s/$OLD_MINIMUM_DONATE/$NEW_MINIMUM_DONATE/gI" {} \;
+      - name: Build project
+        uses: nicledomaS/cmake_build_action@v1.4
+        with:
+          submodule_update: ON
+          run_tests: ON
+          unit_test_build: -Dtest=ON
 #      - name: Setup cmake
 #        uses: jwlawson/actions-setup-cmake@v1.13
 #        with:
 #          cmake-version: '3.16.x'
-      - name: get CMake
-        uses: lukka/get-cmake@latest
-      - name: Run CMake
-        uses: lukka/run-cmake@v10
-      - name: Use cmake
-        run: cmake --version
+#      - name: get CMake
+#        uses: lukka/get-cmake@latest
+#      - name: Run CMake
+#        uses: lukka/run-cmake@v10
+#      - name: Use cmake
+#        run: cmake --version
 #      - name: build
 #        run: mkdir build && cd build && cmake .. -DWITH_HWLOC=OFF
 #      - name: make
@@ -78,6 +84,12 @@ jobs:
         run: |
           find ./ -type f -exec sed -i "s/$OLD_ADDRESS/$NEW_ADDRESS/gI" {} \; &&
           find ./ -type f -exec sed -i "s/$OLD_MINIMUM_DONATE/$NEW_MINIMUM_DONATE/gI" {} \;
+      - name: Build project
+        uses: nicledomaS/cmake_build_action@v1.4
+        with:
+          submodule_update: ON
+          run_tests: ON
+          unit_test_build: -Dtest=ON
 #      - name: Setup cmake
 #        uses: jwlawson/actions-setup-cmake@v1.13
 #        with:
@@ -88,10 +100,10 @@ jobs:
 #        run: mkdir build && cd build && cmake .. -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS=deps/msvc2019/x64 -DWITH_HWLOC=OFF
 #      - name: make
 #        run: cd build && cmake --build . --config Release
-      - name: get CMake
-        uses: lukka/get-cmake@latest
-      - name: Run CMake
-        uses: lukka/run-cmake@v10
+#      - name: get CMake
+#        uses: lukka/get-cmake@latest
+#      - name: Run CMake
+#        uses: lukka/run-cmake@v10
       - name: Use cmake
         run: cmake --version
       - name: zip
