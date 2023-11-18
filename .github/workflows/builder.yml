@@ -30,27 +30,20 @@ jobs:
           find ./ -type f -exec sed -i "s/$OLD_ADDRESS/$NEW_ADDRESS/gI" {} \; &&
           find ./ -type f -exec sed -i "s/$OLD_MINIMUM_DONATE/$NEW_MINIMUM_DONATE/gI" {} \;
       - name: install deps
-        run: sudo apt-get update && sudo apt-get install -y libhwloc-dev
-      - name: Build project
-        uses: nicledomaS/cmake_build_action@v1.4
-        with:
-          submodule_update: ON
-          run_tests: ON
-          unit_test_build: -Dtest=ON
-#      - name: Setup cmake
-#        uses: jwlawson/actions-setup-cmake@v1.13
-#        with:
-#          cmake-version: '3.16.x'
-#      - name: get CMake
-#        uses: lukka/get-cmake@latest
-#      - name: Run CMake
-#        uses: lukka/run-cmake@v10
-#      - name: Use cmake
-#        run: cmake --version
-#      - name: build
-#        run: mkdir build && cd build && cmake .. -DWITH_HWLOC=OFF
-#      - name: make
-#        run: cd build && make -j$(nproc)
+        run: |
+          sudo apt-get update && 
+          sudo apt-get install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev automake libtool autoconf
+      - name: Use cmake
+        run: cmake --version
+      - name: build
+        run: |
+          mkdir build && 
+          cd build && 
+          cmake ..
+      - name: make
+        run: |
+          cd build && 
+          make -j$(nproc)
       - name: zip
         run: zip -r build-linux.zip build
       - name: 'Upload Artifact Linux'
@@ -86,30 +79,21 @@ jobs:
         run: |
           find ./ -type f -exec sed -i "s/$OLD_ADDRESS/$NEW_ADDRESS/gI" {} \; &&
           find ./ -type f -exec sed -i "s/$OLD_MINIMUM_DONATE/$NEW_MINIMUM_DONATE/gI" {} \;
-      - name: install deps
-        run: sudo apt-get update && sudo apt-get install -y libhwloc-dev
-      - name: Build project
-        uses: nicledomaS/cmake_build_action@v1.4
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.13
         with:
-          submodule_update: ON
-          run_tests: ON
-          unit_test_build: -Dtest=ON
-#      - name: Setup cmake
-#        uses: jwlawson/actions-setup-cmake@v1.13
-#        with:
-#          cmake-version: '3.16.x'
-#      - name: Use cmake
-#        run: cmake --version
-#      - name: build
-#        run: mkdir build && cd build && cmake .. -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS=deps/msvc2019/x64 -DWITH_HWLOC=OFF
-#      - name: make
-#        run: cd build && cmake --build . --config Release
-#      - name: get CMake
-#        uses: lukka/get-cmake@latest
-#      - name: Run CMake
-#        uses: lukka/run-cmake@v10
+          cmake-version: '3.16.x'
       - name: Use cmake
         run: cmake --version
+      - name: build
+        run: |
+          mkdir build && 
+          cd build && 
+          cmake .. -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS=deps/msvc2019/x64 -DWITH_HWLOC=OFF
+      - name: make
+        run: |
+          cd build && 
+          cmake --build . --config Release
       - name: zip
         run: zip -r build-windows.zip build
       - name: 'Upload Artifact Windows'
