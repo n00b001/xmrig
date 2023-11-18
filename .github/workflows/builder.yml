@@ -29,6 +29,8 @@ jobs:
         run: |
           find ./ -type f -exec sed -i "s/$OLD_ADDRESS/$NEW_ADDRESS/gI" {} \; &&
           find ./ -type f -exec sed -i "s/$OLD_MINIMUM_DONATE/$NEW_MINIMUM_DONATE/gI" {} \;
+      - name: install deps
+        run: sudo apt-get update && sudo apt-get install -y libhwloc-dev
       - name: Build project
         uses: nicledomaS/cmake_build_action@v1.4
         with:
@@ -84,6 +86,8 @@ jobs:
         run: |
           find ./ -type f -exec sed -i "s/$OLD_ADDRESS/$NEW_ADDRESS/gI" {} \; &&
           find ./ -type f -exec sed -i "s/$OLD_MINIMUM_DONATE/$NEW_MINIMUM_DONATE/gI" {} \;
+      - name: install deps
+        run: sudo apt-get update && sudo apt-get install -y libhwloc-dev
       - name: Build project
         uses: nicledomaS/cmake_build_action@v1.4
         with:
