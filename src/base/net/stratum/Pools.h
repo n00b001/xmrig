@@ -82,8 +82,8 @@ public:
     void toJSON(rapidjson::Value &out, rapidjson::Document &doc) const;
 
 private:
-    void setDonateLevel(float level);
-    void setProxyDonate(int value);
+    void setDonateLevel(double level);
+    void setProxyDonate(double value);
     void setRetries(int retries);
     void setRetryPause(int retryPause);
 
