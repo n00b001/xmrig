@@ -72,7 +72,7 @@ public:
     inline bool operator==(const Pools &other) const    { return isEqual(other); }
 
     bool isEqual(const Pools &other) const;
-    float donateLevel() const;
+    double donateLevel() const;
     IStrategy *createStrategy(IStrategyListener *listener) const;
     rapidjson::Value toJSON(rapidjson::Document &doc) const;
     size_t active() const;
@@ -87,7 +87,7 @@ private:
     void setRetries(int retries);
     void setRetryPause(int retryPause);
 
-    float m_donateLevel;
+    double m_donateLevel;
     int m_retries               = 5;
     int m_retryPause            = 5;
     ProxyDonate m_proxyDonate   = PROXY_DONATE_AUTO;
