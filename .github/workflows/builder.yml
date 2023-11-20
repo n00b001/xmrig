@@ -54,7 +54,7 @@ jobs:
           retention-days: 5
 
       - name: Upload build logs
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v1
         with:
           name: CMakeOutput_linux.log
@@ -104,7 +104,7 @@ jobs:
           retention-days: 5
 
       - name: Upload build logs
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v1
         with:
           name: CMakeOutput_windows.log
