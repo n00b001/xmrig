@@ -83,7 +83,7 @@ public:
 
 private:
     void setDonateLevel(double level);
-    void setProxyDonate(double value);
+    void setProxyDonate(int value);
     void setRetries(int retries);
     void setRetryPause(int retryPause);
 
