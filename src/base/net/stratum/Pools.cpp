@@ -158,7 +158,7 @@ void xmrig::Pools::load(const IJsonReader &reader)
         }
     }
 
-    setDonateLevel(reader.getFloat(kDonateLevel, kDefaultDonateLevel));
+    setDonateLevel(reader.getInt(kDonateLevel, kDefaultDonateLevel));
     setProxyDonate(reader.getInt(kDonateOverProxy, PROXY_DONATE_AUTO));
     setRetries(reader.getInt(kRetries));
     setRetryPause(reader.getInt(kRetryPause));
